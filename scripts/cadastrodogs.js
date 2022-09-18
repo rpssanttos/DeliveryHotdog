@@ -1,4 +1,8 @@
-var clientes = []
+let clientes = JSON.parse(localStorage.getItem("clientes"))
+
+if (clientes == null){
+    clientes = []
+}
 
 function salvarCliente() {
     let nome = document.getElementById('nome').value
@@ -10,16 +14,17 @@ function salvarCliente() {
     let dog_duplo = document.getElementById('dog-duplo').checked
     let dog_linguica = document.getElementById('dog-linguica').checked
 
-let cliente = {
-    nome: nome,
-    email: email,
-    telefone: telefone,
-    cep: cep,
-    numero: numero,
-    dog_tradicional: dog_tradicional,
-    dog_duplo: dog_duplo,
-    dog_linguica: dog_linguica,
-}
-clientes.push(cliente)
-console.log(clientes)
+    let cliente = {
+        nome: nome,
+        email: email,
+        telefone: telefone,
+        cep: cep,
+        numero: numero,
+        dog_tradicional: dog_tradicional,
+        dog_duplo: dog_duplo,
+        dog_linguica: dog_linguica,
+    }
+    clientes.push(cliente)
+
+    localStorage.setItem("clientes", JSON.stringify(clientes))
 }
