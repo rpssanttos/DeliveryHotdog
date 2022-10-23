@@ -4,13 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./estilos/bootstrap/css/bootstrap.min.css">
     <title>Inicio</title>
 </head>
 <body>
-    <h1>Clientes</h1>
-
-    <a href="./cadastro.html">Novo Cliente</a>
-    <br>
-    <a href="./lista.html">Clientes cadastro</a>
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">DeliveryHotDog</a>
+                </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Início</a></li>
+                    <li><a href="./cadastro.html">Cadastro</a></li>
+                    <li><a href="./tabela.html">Tabela</a></li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+        <div class="jumbotron">
+          <h1>HotDog Delivery</h1>
+          <p>Cadastro de Clientes no Delivery.</p>
+          <p>
+              <a class="btn btn-lg btn-primary" href="./tabela.html" role="button">Ver lista de Clientes &raquo;</a>
+          </p>
+        </div>
+    </div>
+    <script src="./estilos/bootstrap/js/bootstrap.min.js"></script>
 </body>
+
 </html>
