@@ -7,6 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./estilos/bootstrap/css/bootstrap.min.css">
     <title>Delivery Hot Dogs</title>
+    <style>
+        .container {
+           background-image: url("./imagens/dog\ foto.jpg");
+           background-repeat: no-repeat;
+           background-position: center;
+           background-size: cover;
+        }
+    </style>
 </head>
 
 <body>
@@ -40,12 +48,20 @@
         <form action="cadastro">
         <div class="form-group">
             <legend>Dados do Cliente</legend>
-            <label for="nome">Nome</label>
+            <label for="nome">Nome *</label>
             <input class="form-control" placeholder="Nome do cliente" type="text" id="nome" name="nome">
-            <br>
-            <label for="email">E-mail</label>
+            <br> <div id="erro-nome" class="alert alert-danger fade show" role="alert">
+                O campo nome é obrigatório!
+              
+            </div>
+
+            <label for="email">E-mail *</label>
             <input class="form-control" placeholder="email do cliente" type="text" id="email" name="email">
             <br>
+            <div id="erro-email" class="alert alert-danger fade show" role="alert">
+                O campo email é obrigatório!
+              
+            </div>
             <label for="telefone">telefone</label>
             <input class="form-control" placeholder="telefone do cliente" type="text" id="telefone" name="telefone">
             <br>
@@ -70,7 +86,10 @@
         </div>
         <button type="button" id="salvar" onclick="salvarCliente()" class= "btn btn-primary">Salvar</button>
     </form>
-    
+    <div id="sucesso" class="alert alert-success fade show" role="alert">
+        Cliente cadastrado com sucesso!
+      
+    </div>
     
 </div>
 

@@ -36,6 +36,23 @@ function salvarCliente() {
     let dog_duplo = document.getElementById('dog-duplo').checked
     let dog_linguica = document.getElementById('dog-linguica').checked
 
+    if(nome === undefined || nome === null || nome ===''){
+        document.getElementById('erro-nome').classList.remove('fade')
+        setTimeout(() =>{
+            document.getElementById('erro-nome').classList.add('fade') 
+        },1000)
+        return
+    } 
+    
+    if(email === undefined || email === null || email ===''){
+        document.getElementById('erro-email').classList.remove('fade')
+        setTimeout(() =>{
+            document.getElementById('erro-email').classList.add('fade') 
+        },1000)
+        return
+    }
+
+
     let cliente = {
         nome: nome,
         email: email,
@@ -57,4 +74,24 @@ function salvarCliente() {
         }
 
     localStorage.setItem("clientes", JSON.stringify(clientes))
+
+    document.getElementById('sucesso').classList.remove('fade')
+    setTimeout(() =>{
+        document.getElementById('sucesso').classList.add('fade') 
+    },1000)
+    limpaFormulario()
+
+}
+
+function limpaFormulario() {
+    document.getElementById('nome').value = ''
+    document.getElementById('email').value = ''
+    document.getElementById('telefone').value = ''
+    document.getElementById('cep').value = ''
+    document.getElementById('numero').value = ''
+    document.getElementById('dog-tradicional').checked = false
+    document.getElementById('dog-duplo').checked = false
+    document.getElementById('dog-linguica').checked = false
+
+
 }
