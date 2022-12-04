@@ -1,18 +1,21 @@
-let clientes = JSON.parse(localStorage.getItem("clientes"))
-if (clientes == null){
-    clientes = []
-}
+const urlApi = "http://ntcursoapi-env.eba-hvwnzgx7.us-east-1.elasticbeanstalk.com/nt-curso-api/hotdog/clientes/"
 
-const indice = location.search.split('=')[1]
+const id = location.search.split('=')[1]
 
-const formEdicao = indice !== undefined
+const formEdicao = id !== undefined
 
 if (formEdicao ){
-    preencheFormulario(indice)
+    fetch(urlApi + id).then(function(resposta){
+        console.log('Encontrado clientecom id'+ id)
+        return resposta.json()
+    }) 
+    .then(function(cliente){
+        preencheFormulario(cliente)
+    })
 }
-function preencheFormulario(indice){
-    console.log('Preenchendo formulario do cliente:'+ indice)
-    let cliente = clientes[indice]
+function preencheFormulario(cliente){
+    console.log('Preenchendo formulario do cliente:'+ cliente.id)
+    
     console.log('Cliente:' + cliente.nome)
     document.getElementById('nome').value = cliente.nome
     document.getElementById('email').value = cliente.email
@@ -63,19 +66,27 @@ function salvarCliente() {
         dog_duplo: dog_duplo,
         dog_linguica: dog_linguica,
     }
-
+        let metodo
         if(formEdicao){
-            clientes[indice] = cliente
-
+            metodo = 'PUT'
+            cliente.id = id
         } 
         else{
             clientes.push(cliente)
             
         }
+    fetch(urlApi,{
+        method: metodo, 
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(cliente)
+    })
+    .then(
+        function(resposta){
+            console.log('Salvo com sucesso',resposta)
+        }
+    )
 
-    localStorage.setItem("clientes", JSON.stringify(clientes))
-
-    document.getElementById('sucesso').classList.remove('fade')
+   document.getElementById('sucesso').classList.remove('fade')
     setTimeout(() =>{
         document.getElementById('sucesso').classList.add('fade') 
     },1000)
